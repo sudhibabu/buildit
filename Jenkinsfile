@@ -21,7 +21,7 @@ pipeline {
         stage('Start Server') {
             steps {
                 echo 'Starting server..'
-                sh 'sudo nohup npm start &'
+                sh 'nohup nodemon index.js &'
             }
         }
         stage('Deploy') {
