@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         CI = 'true'
     }
@@ -11,16 +11,23 @@ pipeline {
                 sh 'npm install'
             }
         }
+
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh './scripts/test.sh'
+                sh 'npm test'
+            }
+        }
+        stage('Start Server') {
+            steps {
+                echo 'Starting server..'
+                sh 'npm start'
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh './scripts/deliver.sh'
+                
             }
         }
     }
