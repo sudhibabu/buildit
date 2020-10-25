@@ -24,9 +24,18 @@ pipeline {
                 sh 'nohup nodemon &'
             }
         }
-        stage('Deploy') {
+        stage('Deploy- Infrastructure ') {
             steps {
-                echo 'Deploying....'
+                echo 'Provisioning Infrastructure'
+                sh 'terraform/terraform init'
+
+                
+            }
+        }
+        stage('Deploy- Configuring servers ') {
+            steps {
+                echo 'Configuring Infrastructure'
+                sh 'ansible/ansible-playbook ....'
                 
             }
         }
